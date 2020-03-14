@@ -24,7 +24,9 @@ $("#search-btn").on('click', function(event) {
         }).then(function(response) {
             console.log(response);
 
-            var weatherDiv = $("<div class='col-md-8'>");
+            var weatherDiv = $("#weatherDiv");
+            // Resets our Div Every new Search so that it's blank
+            weatherDiv.text("")
 
             // City Name:
             var printSearchInput = $("<p>").text("City: " + searchInput);
@@ -69,6 +71,7 @@ $("#search-btn").on('click', function(event) {
                   weatherDiv.append(printUVI)
             });
 
+            
             $("#things").append(weatherDiv)
             
         });
