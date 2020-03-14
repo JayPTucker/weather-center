@@ -32,26 +32,29 @@ $("#search-btn").on('click', function(event) {
 
             // Current Date:
             var currentDate = new moment().format("dddd, MMMM Do, YYYY")
-            var printCurrentDate = $("<p>").text("Date: " + currentDate);
-            weatherDiv.append(printCurrentDate);
+            var printCD = $("<p>").text("Date: " + currentDate);
+            weatherDiv.append(printCD);
 
             // Icon Representation of Weather Conditions:
             var iconID = response.weather[0].icon;
             var iconURL = "http://openweathermap.org/img/w/" + iconID + ".png";
-            var printWeatherCondition = $("<img>").attr("src", iconURL); 
-            weatherDiv.append(printWeatherCondition);
+            var printWC= $("<img>").attr("src", iconURL); 
+            weatherDiv.append(printWC);
 
             // The Current Temperature:
             var currentTemp = ((response.main.temp) * (9/5) - 459.67).toFixed(2);
-            var printCurrentTemp = $("<p>").text("Temperature: " + currentTemp);
+            var printCT = $("<p>").text("Temperature: " + currentTemp);
+            weatherDiv.append(printCT);
 
             // The Humidity:
             var currentHumidity = response.main.humidity;
-            console.log(currentHumidity);
+            var printCH = $("<p>").text("Humidity: " + currentHumidity)
+            weatherDiv.append(printCH);
 
             // The Wind Speed:
-            var currentWindSpeed = response.wind.speed + " MPH";
-            console.log(currentWindSpeed);
+            var currentWindSpeed = response.wind.speed + " Mph";
+            var printCWS = $("<p>").text("Wind Speed: " + currentWindSpeed);
+            weatherDiv.append(printCWS);
 
             // The UV Index:
             var latitude = response.coord.lat;
@@ -62,12 +65,11 @@ $("#search-btn").on('click', function(event) {
                 method: "GET"
               }).then(function(response) {
                   var uvIndex = response.value;
-                  return uvIndex;
+                  var printUVI = $("<p>").text("UV Index: " + uvIndex);
+                  weatherDiv.append(printUVI)
             });
 
             $("#things").append(weatherDiv)
-            //
-
             
         });
     
