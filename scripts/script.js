@@ -74,9 +74,20 @@ $("#search-btn").on('click', function(event) {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+            console.log(response)
             var uvIndex = response.value;
-            var printUVI = $("<p>").text("UV Index: " + uvIndex);
+            var printUVI = $("<p id='uvIndex'>").text("UV Index: " + uvIndex);
+            
+            // Determines the safe conditions of the UVIndex by Colors
             weatherDiv.append(printUVI)
+            if(uvIndex <= 2) {
+                $("#uvIndex").css("color", "green")
+            } else if (uvIndex <= 5) {
+                $("#uvIndex").css("color", "yellow")
+            } else if (uvIndex <= 15) {
+                $("#uvIndex").css("color", "red")
+            }
+
         });
 
         
