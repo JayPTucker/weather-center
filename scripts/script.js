@@ -69,11 +69,14 @@ $("#search-btn").on('click', function(event) {
         // The UV Index:
         var latitude = response.coord.lat;
         var longitude = response.coord.lon;
-        let queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=e8bec4199b95f357f589f6ba4bdcd7c3&lat="+ latitude +"&lon="+ longitude;
+        var UVIqueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=e8bec4199b95f357f589f6ba4bdcd7c3&lat="+ latitude +"&lon="+ longitude;
+
         $.ajax({
-            url: queryURL,
+            url: UVIqueryURL,
             method: "GET"
+
         }).then(function(response) {
+
             console.log(response)
             var uvIndex = response.value;
             var printUVI = $("<p id='uvIndex'>").text("UV Index: " + uvIndex);
@@ -90,9 +93,41 @@ $("#search-btn").on('click', function(event) {
 
         });
 
-        
-        $("#things").append(weatherDiv);
+        // Appends everything we just created into the actual web page itself.
+        $("#weatherDiv").append(weatherDiv);
 
+        // -------------------------------------------------------------
+        // 5 DAY FORECAST:
+
+        var FiveDFDiv = $("#5DFDiv");
+        var print5DFbtn = ($("<button id='5DFbtn'>").text("View 5 Day Forecast"));
+        // Deletes the Button everytime so it doesn't duplicate itself
+        FiveDFDiv.text("");
+
+        FiveDFDiv.append(print5DFbtn);
+
+        $("#5DFbtn").on('click', function() {
+            
+            var FiveDayqueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput + "&appid=e8bec4199b95f357f589f6ba4bdcd7c3"
+
+            $.ajax({
+                url: FiveDayqueryURL,
+                method: "GET"
+            }).then(function(response) {
+                console.log(response.list);
+                console.log("-----------------")
+                // DAY 0
+                console.log(response.list[0])
+                // DAY 1
+                console.log(response.list[9])
+                // DAY 2
+                console.log(response.list[18])
+                // DAY 3
+                console.log(response.list[28])
+                // DAY 4
+                console.log(response.list[39])
+            });
+        });
     });
     
     // WHEN I CLICK ON A CITY THAT'S IN MY SEARCH HISTORY, DO THIS:
@@ -102,6 +137,7 @@ $("#search-btn").on('click', function(event) {
             console.log(($("#" + searchInput).val()))
             
         // ------------------------------------
+        // UPDATE LATER:
         // Repeated Ajax function above except I got rid of the success function.
 
         $.ajax({
