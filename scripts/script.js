@@ -12,7 +12,15 @@ $("#search-btn").on('click', function(event) {
 
             // IF THE CITY IS FOUND DO THIS
             success: function() {
-                $("#search-history").append("<li><input id='history-search-btn' class='previous-search' type='submit' value='" + searchInput + "'></li>");
+                // Checks if the value is already in the list, if it is alert that the city is already there.
+                if(searchInput === (($("#" + searchInput).val()))) {
+                    alert("This city already exists and is in your History tab.")
+
+                // Else, create a new input button.
+                } else {
+                    $("#search-history").append("<li><input type='submit' id='" + searchInput + "' value='" + searchInput + "'></li>")
+                }
+                // Activates our Function to detect whenever a button in the history tab
                 getCity();
             },
 
@@ -72,15 +80,15 @@ $("#search-btn").on('click', function(event) {
             });
 
             
-            $("#things").append(weatherDiv)
-            
+            $("#things").append(weatherDiv);
+    
         });
     
     // WHEN I CLICK ON A CITY THAT'S IN MY SEARCH HISTORY, DO THIS:
     function getCity() {
-        $("#history-search-btn").on('click', function(event) {
+        $("#" + searchInput).on('click', function(event) {
             event.preventDefault();
-            console.log(searchInput);
+            console.log(($("#" + searchInput).val()))
         });
     }
 });
