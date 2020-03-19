@@ -1,6 +1,10 @@
 var currentDate = $("#date");
 currentDate.text("Date: " + (new moment().format("dddd, MMMM Do, YYYY")));
 
+// PRINTS OUT OUR MOST RECENT SEARCH RIGHT AS YOU REFRESH THE WEBSITE
+$("#search-history").append("<li><input type='submit' class='historyBtn' id='" + localStorage.getItem("recentsearch") + "' value='" + localStorage.getItem("recentsearch") + "'></li>")
+
+// Upon Button Click
 $("#search-btn").on('click', function(event) {
     event.preventDefault();
     // Whatever we search
@@ -24,6 +28,7 @@ $("#search-btn").on('click', function(event) {
         // Else, create a new input button.
         } else {
             $("#search-history").append("<li><input type='submit' class='historyBtn' id='" + searchInput + "' value='" + searchInput + "'></li>")
+            localStorage.setItem("recentsearch", searchInput)
         }
         // Activates our Function to detect whenever a button in the history tab
         getCity();
@@ -47,7 +52,7 @@ $("#search-btn").on('click', function(event) {
 
         // Current Date:
         var currentDate = new moment().format("dddd, MMMM Do, YYYY")
-        var printCD = $("<p>").text("Date: " + currentDate);
+        var printCD = $("<p class='daysdate'>").text("Date: " + currentDate);
         weatherDiv.append(printCD);
 
         // Icon Representation of Weather Conditions:
@@ -223,15 +228,24 @@ $("#search-btn").on('click', function(event) {
         });
     });
     
+
+
+
+
+// -----------------------------------------------------------------------------
+
+
+
+
     // WHEN I CLICK ON A CITY THAT'S IN MY SEARCH HISTORY, DO THIS:
+
+
     function getCity() {
         $("#" + searchInput).on('click', function(event) {
             event.preventDefault();
             console.log(($("#" + searchInput).val()))
             
         // ------------------------------------
-        // UPDATE LATER:
-        // Repeated Ajax function above except I got rid of the success function.
 
             $.ajax({
                 // URL | METHOD
@@ -262,7 +276,7 @@ $("#search-btn").on('click', function(event) {
 
                 // Current Date:
                 var currentDate = new moment().format("dddd, MMMM Do, YYYY")
-                var printCD = $("<p>").text("Date: " + currentDate);
+                var printCD = $("<p class='daysdate'>").text("Date: " + currentDate);
                 weatherDiv.append(printCD);
 
                 // Icon Representation of Weather Conditions:
@@ -347,7 +361,7 @@ $("#search-btn").on('click', function(event) {
                         var day1Temp = (((response.list[0].main.temp) * (9/5) - 459.67).toFixed(2));
                         var day1Humidity = response.list[0].main.humidity;
 
-                        var printDay1Date = ($("<p>").text(day1Date));
+                        var printDay1Date = ($("<p class='daysdate'>").text(day1Date));
                         var printDay1Icon = ($("<img>").attr("src", day1Icon));
                         var printDay1Temp = ($("<p>").text("Temperature: " + day1Temp + " °F"));
                         var printDay1Humidity = ($("<p>").text("Humidity: " + day1Humidity));
@@ -366,7 +380,7 @@ $("#search-btn").on('click', function(event) {
                         var day2Temp = (((response.list[8].main.temp) * (9/5) - 459.67).toFixed(2));
                         var day2Humidity = response.list[8].main.humidity;
 
-                        var printDay2Date = ($("<p>").text(day2Date));
+                        var printDay2Date = ($("<p class='daysdate'>").text(day2Date));
                         var printDay2Icon = ($("<img>").attr("src", day2Icon));
                         var printDay2Temp = ($("<p>").text("Temperature: " + day2Temp + " °F"));
                         var printDay2Humidity = ($("<p>").text("Humidity: " + day2Humidity));
@@ -385,7 +399,7 @@ $("#search-btn").on('click', function(event) {
                         var day3Temp = (((response.list[16].main.temp) * (9/5) - 459.67).toFixed(2));
                         var day3Humidity = response.list[16].main.humidity;
 
-                        var printDay3Date = ($("<p>").text(day3Date));
+                        var printDay3Date = ($("<p class='daysdate'>").text(day3Date));
                         var printDay3Icon = ($("<img>").attr("src", day3Icon));
                         var printDay3Temp = ($("<p>").text("Temperature: " + day3Temp + " °F"));
                         var printDay3Humidity = ($("<p>").text("Humidity: " + day3Humidity));
@@ -404,7 +418,7 @@ $("#search-btn").on('click', function(event) {
                         var day4Temp = (((response.list[24].main.temp) * (9/5) - 459.67).toFixed(2));
                         var day4Humidity = response.list[24].main.humidity;
 
-                        var printDay4Date = ($("<p>").text(day4Date));
+                        var printDay4Date = ($("<p class='daysdate'>").text(day4Date));
                         var printDay4Icon = ($("<img>").attr("src", day4Icon));
                         var printDay4Temp = ($("<p>").text("Temperature: " + day4Temp + " °F"));
                         var printDay4Humidity = ($("<p>").text("Humidity: " + day4Humidity));
@@ -423,7 +437,7 @@ $("#search-btn").on('click', function(event) {
                         var day5Temp = (((response.list[32].main.temp) * (9/5) - 459.67).toFixed(2));
                         var day5Humidity = response.list[32].main.humidity;
 
-                        var printDay5Date = ($("<p>").text(day5Date));
+                        var printDay5Date = ($("<p class='daysdate'>").text(day5Date));
                         var printDay5Icon = ($("<img>").attr("src", day5Icon));
                         var printDay5Temp = ($("<p>").text("Temperature: " + day5Temp + " °F"));
                         var printDay5Humidity = ($("<p>").text("Humidity: " + day5Humidity));
