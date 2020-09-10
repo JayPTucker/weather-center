@@ -2,15 +2,23 @@ var currentDate = $("#date");
 currentDate.text("Date: " + (new moment().format("dddd, MMMM Do, YYYY")));
 
 // PRINTS OUT OUR MOST RECENT SEARCH RIGHT AS YOU REFRESH THE WEBSITE
-console.log(localStorage.getItem("recentsearch"))
-var searchHistory = localStorage.getItem("recentsearch")
+for (i = 0; i < localStorage.length; i++) {
+    console.log(localStorage.key([i]))
+}
 
+console.log("----------------")
+
+var searchHistory = localStorage.key(0)
+
+// Determines if the Search history is empty or not so no "null" statement appears.
 if (searchHistory === null) {
     console.log("is null")
     $("#search-history").append("<p class='nohistory' id='nohistory'>No Search History Found.</p>")
 } else {
     console.log("isn't null")
-    $("#search-history").append("<li><input type='submit' class='historyBtn' id='" + localStorage.getItem("recentsearch") + "' value='" + localStorage.getItem("recentsearch") + "'></li>")
+    for (i = 0; i < localStorage.length; i++) {
+        $("#search-history").append("<li><input type='submit' class='historyBtn' id='" + localStorage.key([i]) + "' value='" + localStorage.key([i]) + "'></li>")
+    }
 }
 
 
@@ -38,7 +46,7 @@ $("#search-btn").on('click', function(event) {
         // Else, create a new input button.
         } else {
             $("#search-history").append("<li><input type='submit' class='historyBtn' id='" + searchInput + "' value='" + searchInput + "'></li>")
-            localStorage.setItem("recentsearch", searchInput)
+            localStorage.setItem(searchInput, "recentsearch")
             $("#nohistory").remove();
         }
         // Activates our Function to detect whenever a button in the history tab
@@ -47,7 +55,7 @@ $("#search-btn").on('click', function(event) {
 
         // IF THE CITY ISNT FOUND DO THIS
         error: function() {
-            alert('City Not Found.  Try Again.')
+            alert('The City you entered is not Valid, please try again.')
         }
 
     }).then(function(response) {
