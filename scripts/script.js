@@ -2,7 +2,17 @@ var currentDate = $("#date");
 currentDate.text("Date: " + (new moment().format("dddd, MMMM Do, YYYY")));
 
 // PRINTS OUT OUR MOST RECENT SEARCH RIGHT AS YOU REFRESH THE WEBSITE
-$("#search-history").append("<li><input type='submit' class='historyBtn' id='" + localStorage.getItem("recentsearch") + "' value='" + localStorage.getItem("recentsearch") + "'></li>")
+console.log(localStorage.getItem("recentsearch"))
+var searchHistory = localStorage.getItem("recentsearch")
+
+if (searchHistory === null) {
+    console.log("is null")
+    $("#search-history").append("<p class='nohistory' id='nohistory'>No Search History Found.</p>")
+} else {
+    console.log("isn't null")
+    $("#search-history").append("<li><input type='submit' class='historyBtn' id='" + localStorage.getItem("recentsearch") + "' value='" + localStorage.getItem("recentsearch") + "'></li>")
+}
+
 
 // Upon Button Click
 $("#search-btn").on('click', function(event) {
@@ -29,6 +39,7 @@ $("#search-btn").on('click', function(event) {
         } else {
             $("#search-history").append("<li><input type='submit' class='historyBtn' id='" + searchInput + "' value='" + searchInput + "'></li>")
             localStorage.setItem("recentsearch", searchInput)
+            $("#nohistory").remove();
         }
         // Activates our Function to detect whenever a button in the history tab
         getCity();
