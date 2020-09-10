@@ -1,5 +1,5 @@
 ## The Weather Center
-Live Link:  [Click me!]()
+Live Link:  [Click me!](https://jayptucker.github.io/weather-dashboard/)
 
 Github Link: [Click me!](https://github.com/JayPTucker/weather-dashboard)
 
