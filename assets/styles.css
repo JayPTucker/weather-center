@@ -1,8 +1,65 @@
 body {
-    background-color: white !important;
     font-family: 'Sen', sans-serif !important;
-    font-size: 20px !important;
-    font-weight: bold !important;
+    /* background-image: url("../assets/images/background.mp4");
+    background-position: center;
+    background-repeat: no-repeat; */
+}
+
+ul {
+    list-style-type: none;
+}
+
+.background-vid {
+    z-index: -1;
+    position: absolute;
+    width: 1913;
+    height: 1080;
+    object-fit: cover;
+    margin-left: -20px;
+}
+
+/* SCROLL BAR: */
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+    transition: all 0.3s ease-in-out !important;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #727272; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1f76ac; 
+    border-radius: 20px;
+    border: 2px solid rgb(0, 0, 0);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #125783; 
+    border: 2px solid rgb(255, 255, 255);
+  }
+
+
+/* ======================================= */
+
+.headerRow {
+    background-color: rgba(0, 0, 0, 0.452);
+    border: 1px solid black;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.headerRow:hover {
+    background-color: rgba(83, 83, 83, 0.883);
+
+    border: 1px solid white;
+
+
 }
 
 .logoImg {
@@ -12,62 +69,83 @@ body {
 }
 
 .logoImg:hover {
-    transform: scale(1.4);
-    transition: 0.4s;
+    transform: scale(1.3);
+    transition: 0.3s;
 }
 
 .title {
     font-size: 45px;
+    text-shadow: 2px 2px 1px black;
 }
 
-.header {
-    background-color: rgb(88, 88, 88);
+/* ======================================= */
+
+.currentWeatherRow {
+    background-color: rgba(54, 54, 54, 0.685);
     border: 1px solid black;
-    box-shadow: 0px 0px 10px black;
+    transition: all 0.3s ease-in-out;
+}
+
+.currentWeatherRow:hover {
+    background-color: rgba(107, 107, 107, 0.705);
+    border: 1px solid white;
+}
+
+.search-txt {
     color: white;
-    padding: 10px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black
 }
 
 #city-search {
     text-align: center;
-    box-shadow: 0px 0px 3px black;
-    margin-right: 5px;
-    border-radius: 20px;
+    border: 2px solid black;
+    transition: all 0.3s ease-in-out;
+    font-size: 20px;
 }
 
-button:focus {
-    outline: none !important;
-}
-
-input:focus {
-    outline: none !important;
-}
-
-button, .historyBtn {
-    box-shadow: 0px 0px 3px black;
-    border-radius: 20px !important;
-    background-color: rgb(57, 144, 226);
+#city-search:hover {
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(61, 61, 61);
     color: white;
-    transition: all .4s ease-in-out;
+}
+.search-btn{
+    width: 80px;
+    background-color: rgba(57, 144, 226, 0.575);
+    border: 2px solid rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px black;
+    color: white;
+    font-size: 20px;
+    transition: all 0.2s ease-in-out;
 }
 
-button:hover, .historyBtn:hover {
-    transform: scale(1.2);
-    transition: 0.4s;
-    background-color: rgb(25, 92, 155)
+.search-btn:hover {
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(57, 144, 226);
+
 }
 
-hr.divider { 
-    margin: 20px !important;
-    border-width: 2px;
-    background-color: black;
+/* ======================================= */
+
+.historyBtn {
+    width: 120px;
+    background-color: rgba(57, 144, 226, 0.575);
+    color: white;
+    border: 2px solid rgb(0, 0, 0);
+    transition: all 0.2s ease-in-out;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
 }
 
-.currentWeather {
-    background-color: rgb(212, 212, 212);
-    box-shadow: 0px 0px 10px rgb(83, 83, 83);
+.historyBtn:hover {
+    background-color: rgb(57, 144, 226);
+    border: 2px solid white;
+    transform: scale(1.05)
 }
+
+
 
 .dayBoxes {
     background-color: rgb(212, 212, 212);

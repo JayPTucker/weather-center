@@ -16,7 +16,11 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row header">
+        <video class="background-vid" autoplay muted loop>
+            <source src="assets/images/background.mp4" type="video/mp4">
+        </video>
+
+        <div class="row headerRow">
             <div class="col-md-4 text-center">
                 <a href="https://jayptucker.com"><img class="logoImg" src="assets/images/favicon.png" alt="My Logo"></a>
             </div>
@@ -24,23 +28,23 @@
                 <h4 class="title">The Weather Center</h4>
             </div>
             <div class="col-md-4 text-center" id="date">
-            
+                <!-- Date goes here -->
             </div>
         </div>
-        <div class="row currentWeather">
+
+        <div class="row currentWeatherRow">
             <div class="searchDiv col-md-4 justify-content-center">
-                <p>Search for a City</p>
-                <form><input id="city-search" type="text" placeholder="City Name Here"><button id="search-btn">Search</button></form>
-                <p>Search History:</p>
+                <p class="search-txt">Search for a City</p>
+                <form><input id="city-search" type="text" placeholder="City Name Here"><button class="search-btn" id="search-btn">Search</button></form>
+                <p class="search-txt">Search History:</p>
                 <ul id="search-history"></ul>
             </div>
-            <div class="col-md-4 justify-content-center text-center" id="weatherDiv">
-                
-            </div>
+            <div class="col-md-4 justify-content-center text-center" id="weatherDiv">    
+        </div>
             
         </div>
-        <hr class="divider">
-        <div class="row">
+
+        <div class="row 5DFrow">
             <div class="col-md-12 fiveDFDiv" id="5DFbtnDiv">
                 
             </div>
