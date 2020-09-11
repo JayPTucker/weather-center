@@ -98,7 +98,7 @@ $("#search-btn").on('click', function(event) {
         // Icon Representation of Weather Conditions:
         var iconID = response.weather[0].icon;
         var iconURL = "http://openweathermap.org/img/w/" + iconID + ".png";
-        var printWC= $("<img>").attr("src", iconURL); 
+        var printWC= $("<img class='weatherIcon'>").attr("src", iconURL); 
         weatherDiv.append(printWC);
 
         // The Current Temperature:
@@ -326,7 +326,7 @@ function LoopForever() {
         // Icon Representation of Weather Conditions:
         var iconID = response.weather[0].icon;
         var iconURL = "http://openweathermap.org/img/w/" + iconID + ".png";
-        var printWC= $("<img>").attr("src", iconURL); 
+        var printWC= $("<img class='weatherIcon'>").attr("src", iconURL); 
         weatherDiv.append(printWC);
 
         // The Current Temperature:

@@ -145,6 +145,22 @@ ul {
     transform: scale(1.05)
 }
 
+/* ======================================= */
+
+
+.weatherResultsCol {
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+img.weatherIcon {
+    width: 100px;
+    margin: -25px
+}
+
+/* ======================================= */
 
 
 .dayBoxes {
