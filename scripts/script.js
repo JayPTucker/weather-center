@@ -72,8 +72,11 @@ $("#search-btn").on('click', function(event) {
 
     }).then(function(response) {
         console.log(response);
-
+        
+        //Sends our data to the getWeather Function
         getWeather(response);
+
+        // Clears the Search Input Box
         $("#city-search").val("")
     });
 
@@ -497,4 +500,4 @@ function LoopForever() {
 
 // INTERVAL THAT KEEPS CONSTANTLY CHECKING IF THE BUTTON IS PRESSED OR NOT.  3 SECOND DELAY UPON
 // WEBSITE REFRESH.  3000MS BY DEFAULT.
-var interval = self.setInterval(function(){LoopForever()},3000);
+var interval = self.setInterval(function(){LoopForever()}, 5000);
