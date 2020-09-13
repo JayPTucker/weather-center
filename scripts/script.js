@@ -149,8 +149,8 @@ $("#search-btn").on('click', function(event) {
         // 5 DAY FORECAST CREATION:
 
         var FDFbtnDiv = $("#5DFbtnDiv");
-        var print5DFbtn = ($("<button id='5DFbtn'>").text("View 5 Day Forecast"));
-        var printCurrentCity = ($("<p>").text("Current City: " + searchInput))
+        var print5DFbtn = ($("<button class='FDFbtn' id='5DFbtn'>").text("View 5 Day Forecast"));
+        var printCurrentCity = ($("<p class='currentcity'>").text("Current City: " + searchInput))
         // Deletes the Button everytime so it doesn't duplicate itself
         FDFbtnDiv.text("");
 
@@ -377,8 +377,8 @@ function LoopForever() {
         // 5 DAY FORECAST CREATION:
 
         var FDFbtnDiv = $("#5DFbtnDiv");
-        var print5DFbtn = ($("<button id='5DFbtn'>").text("View 5 Day Forecast"));
-        var printCurrentCity = ($("<p>").text("Current City: " + searchInput))
+        var print5DFbtn = ($("<button class='FDFbtn' id='5DFbtn'>").text("View 5 Day Forecast"));
+        var printCurrentCity = ($("<p class='currentcity'>").text("Current City: " + searchInput))
         // Deletes the Button everytime so it doesn't duplicate itself
         FDFbtnDiv.text("");
 
