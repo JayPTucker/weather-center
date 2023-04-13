@@ -1,55 +1,43 @@
-# The Weather Center
+# Weather Center
 
-![License](https://img.shields.io/badge/License-CCL-brightgreen) 
+Weather Center is a web application that allows users to search for weather information for a specific location. Users can view current weather conditions, as well as a 5-day forecast, for any desired location. The application retrieves weather data from a third-party API.
 
-**Live Link: [Click me!](https://jayptucker.github.io/weather-dashboard/)** 
- 
-**GitHub Repository: [Click me!](https://github.com/JayPTucker/weather-dashboard)** 
+## Features
 
-**My Website: [Click me!](https://jayptucker.com/)**
- 
-## 📄 Description: <a name='description'></a> 
-**Updated (10/9/20):**
+- Search Weather: Users can search for weather information for a specific location by entering a city name or ZIP code.
+- Current Weather: Users can view the current weather conditions, including temperature, humidity, wind speed, UV index, and weather icons.
+- 5-Day Forecast: Users can view a 5-day forecast, including weather icons, temperatures, and humidity levels.
+- Search History: Users can view their search history, which displays their past search queries along with corresponding weather data.
 
-This is a Website made to help you better get an understanding of the Weather conditions in the areas you'd like to see.  Using this Site you'll be able to gather Weather-related Data from the Area of your Choice thanks to the Open Weather API (Linked Below).  You may also view the 5-Day Forecast of any area you'd like and your most recent search is saved with Local Storage, so you may go back at any point and click on it without having to search again.
- 
-## 📖 Table of Contents: 
-- [Description](#description) 
-- [Installation](#installation) 
-- [Usage](#usage) 
-- [Credits](#credits) 
+## Technologies Used
 
- 
-## 🔌 Installation: <a name='installation'></a> 
+- React: A popular JavaScript library for building user interfaces.
+- Axios: A promise-based HTTP client for making API requests from the browser.
+- OpenWeatherMap API: A free weather API that provides current weather data and forecasts for various locations.
+- Bootstrap: A popular CSS framework for building responsive and modern web interfaces.
+- LocalStorage: A web storage mechanism that allows data to be stored in the user's browser for persistent storage of search history.
+- JavaScript: The programming language used for building the application's logic.
+- HTML/CSS: The markup and styling languages used for building the user interface.
 
-**Requirements:**
-- [VSCode](https://code.visualstudio.com/)
-- [GitBash](https://git-scm.com/downloads)
-- [NodeJS](https://nodejs.org/en/)
+## Installation
 
-**Installation Steps:**
-1. Clone the file from [my GitHub](https://github.com/JayPTucker)
-2. Put it somewhere you'll remember (Best Choice for Easy Access: In a Folder on your Desktop)
-3. Open GitBash and cd directly into the directory.
-- "cd desktop" > "cd weather-dashboard" > Done!
-4. Once you're CD'd inside of the Repository, type "code ." into GitBash and hit Enter.
-5. VSCode should open (Or any other Software you use to code).
-6. From there, you have all your files you need to begin coding.
-7. Have fun! Send me what you did!
- 
-## 💻 Usage: <a name='usage'></a> 
- 
-When you first get to the Website you'll be able to enter in any city of your choice into the Search box to the far left of the screen.  Once you enter in a City you can hit search or Enter and your results will pop up on the screen (If it is not a valid city, you will get an error).  The Current Weather will be in the Center and right below you have the option to view the 5-Day Forecast which consists of the future 5 Day's Weather.  When you refresh your screen, the city you last searched will stay in your History just in case you'd like to quickly view it the next time you visit the site.
- 
-## 👨‍💼 Credits <a name='credits'></a>: 
- 
-<img src="https://avatars3.githubusercontent.com/u/58493507?s=460&u=263ac14280eff2f063c0507859985bb7750aaa00&v=4" width="70" style="border: 2px solid black"></img><br>
-<a href="https://github.com/JayPTucker"><b>@JayPTucker</b></a>
-<ul>
-    <li><b>ROLE:</b> Main Developer</li>
-</ul>
-<br>
+1. Clone the repository: `git clone https://github.com/JayPTucker/weather-center.git`
+2. Change to the project directory: `cd weather-center`
+3. Get API key: Sign up for a free API key from OpenWeatherMap API (https://openweathermap.org/api) and replace the placeholder `API_KEY` in the `src/utils/api.js` file with your actual API key.
+4. Start the application: Open the `index.html` file in your web browser.
 
-## License:
-https://creativecommons.org/licenses/
+## Usage
 
+1. Enter Location: In the search bar, enter a city name or ZIP code for which you want to retrieve weather information.
+2. View Weather: The current weather conditions and 5-day forecast for the entered location will be displayed on the screen.
+3. View Search History: The search history will be displayed on the left-hand side of the screen, showing past search queries and corresponding weather data.
+4. Select from Search History: Users can click on a past search query from the search history to quickly retrieve weather information for that location.
+5. Responsive Design: The application is designed to be responsive and can be used on various devices, including desktops, tablets, and mobile phones.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+If you have any questions, comments, or suggestions, please feel free to contact me at [your.email@example.com](mailto:your.email@example.com).
