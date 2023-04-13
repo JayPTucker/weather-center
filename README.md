@@ -40,4 +40,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions, comments, or suggestions, please feel free to contact me at [your.email@example.com](mailto:your.email@example.com).
+If you have any questions, comments, or suggestions, please feel free to contact me at [jaypaultucker@gmail.com](mailto:jaypaultucker@gmail.com).
