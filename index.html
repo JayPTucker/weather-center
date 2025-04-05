@@ -15,11 +15,16 @@
     <title>JPT - Weather Center</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <video class="background-vid" autoplay muted loop>
-            <source src="assets/images/background.mp4" type="video/mp4">
-        </video>
+    <video id="background-video-1" class="background-vid" autoplay muted loop playsinline>
+        <source src="./assets/videos/clear.mp4" type="video/mp4">
+      </video>
+      
+      <video id="background-video-2" class="background-vid" autoplay muted loop playsinline style="opacity: 0;">
+        <source src="./assets/videos/clear.mp4" type="video/mp4">
+      </video>
 
+    <div class="container-fluid">
+        
         <div class="row headerRow">
             <div class="col-md-4 text-center">
                 <a href="https://jayptucker.com"><img class="logoImg" src="assets/images/favicon.png" alt="My Logo"></a>

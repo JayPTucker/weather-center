@@ -1,8 +1,5 @@
 body {
     font-family: 'Sen', sans-serif !important;
-    /* background-image: url("../assets/images/background.mp4");
-    background-position: center;
-    background-repeat: no-repeat; */
 }
 
 ul {
@@ -10,12 +7,16 @@ ul {
 }
 
 .background-vid {
-    z-index: -1;
-    position: absolute;
-    width: 1913;
-    height: 1080;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    margin-left: -20px;
+    z-index: -1;
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    pointer-events: none;
 }
 
 /* SCROLL BAR: */
