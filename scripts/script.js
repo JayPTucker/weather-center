@@ -18,21 +18,27 @@ function loadSearchHistory() {
 }
 
 // Fetch Weather Data
-function fetchWeather(city) {
-    const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e8bec4199b95f357f589f6ba4bdcd7c3`;
+function fetchWeather(cityName) {
+    const geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=e8bec4199b95f357f589f6ba4bdcd7c3`;
 
-    $.ajax({ url: queryURL, method: "GET" })
-        .done(response => {
+    $.ajax({ url: geoURL, method: "GET" }).done(geoResponse => {
+        if (!geoResponse.length) {
+            alert("City not found.");
+            return;
+        }
 
-            changeBackground(response)
+        const { name, state, country, lat, lon } = geoResponse[0];
+
+        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e8bec4199b95f357f589f6ba4bdcd7c3`;
+
+        $.ajax({ url: weatherURL, method: "GET" }).done(weatherResponse => {
+            changeBackground(weatherResponse);
 
             $(".5DFresults").text("");
-            displayCurrentWeather(city, response);
+            displayCurrentWeather({ name, state, country }, weatherResponse);
             $("#city-search").val("");
-        })
-        .fail(() => {
-            alert("The City you entered is not Valid. Please try again.");
         });
+    });
 }
 
 function changeBackground(response) {
@@ -43,7 +49,7 @@ function changeBackground(response) {
         },
         Rain: {
             message: "Rainy",
-            video: "./assets/videos/rain.mp4"
+            video: "./assets/videos/rain.mov"
         },
         Clouds: {
             message: "Cloudy",
@@ -61,6 +67,8 @@ function changeBackground(response) {
     };
     
     const currentConditions = response.weather[0].main;
+
+    console.log(response)
     
     const weatherInfo = conditionMap[currentConditions] || {
         message: "Unknown weather condition",
@@ -94,22 +102,43 @@ function updateBackgroundVideo(videoPath) {
 
 
 
-// Display Current Weather
-function displayCurrentWeather(city, response) {
+function displayCurrentWeather(location, response) {
+    const { name, state, country } = location;
     const weatherDiv = $("#weatherDiv").empty();
 
     const weatherHTML = `
-        <p>City: ${city}</p>
-        <p class='daysdate'>Date: ${moment().format("dddd, MMMM Do, YYYY")}</p>
-        <img class='weatherIcon' src='http://openweathermap.org/img/w/${response.weather[0].icon}.png'>
-        <p>Temperature: ${((response.main.temp) * (9/5) - 459.67).toFixed(2)} °F</p>
+        <p class="location">${name}${state ? `, ${state}` : ""} (${country})</p>
+        <p class="currentTemp">${((response.main.temp) * (9/5) - 459.67).toFixed(2)} °F</p>
+        <i class="wi wi-day-sunny" id="weatherIcon"></i>
+        <p id="currentCondition"></p>
+        <p>Feels Like: ${((response.main.feels_like) * (9/5) - 459.67).toFixed(2)} °F</p>
         <p>Humidity: ${response.main.humidity}</p>
         <p>Wind Speed: ${response.wind.speed} Mph</p>
     `;
 
     weatherDiv.append(weatherHTML);
+
+    // Inject the current condition
+    $("#currentCondition").text(`Condition: ${response.weather[0].main}`);
+
     fetchUVIndex(response.coord.lat, response.coord.lon);
-    setup5DayForecastButton(city);
+    setup5DayForecastButton(name);
+    const conditionMap = {
+        Clear: "wi-day-sunny",
+        Clouds: "wi-cloudy",
+        Rain: "wi-rain",
+        Snow: "wi-snow",
+        Thunderstorm: "wi-thunderstorm",
+        Mist: "wi-fog",
+        Drizzle: "wi-sprinkle"
+    };
+    
+    const currentCondition = response.weather[0].main;
+    const iconClass = conditionMap[currentCondition] || "wi-na";
+    
+    $("#weatherIcon")
+      .removeClass()
+      .addClass(`wi ${iconClass}`);
 }
 
 // Fetch UV Index
@@ -145,14 +174,16 @@ function fetchFiveDayForecast(city) {
         indices.forEach((i, day) => {
             const entry = response.list[i];
             const date = entry.dt_txt.substring(0, 10);
-            const icon = `http://openweathermap.org/img/w/${entry.weather[0].icon}.png`;
+            const icon = `https://openweathermap.org/img/wn/${entry.weather[0].icon}@2x.png`;
             const temp = ((entry.main.temp) * (9/5) - 459.67).toFixed(2);
+            const feels_like = ((entry.main.feels_like) * (9/5) - 459.67).toFixed(2);
             const humidity = entry.main.humidity;
 
             const container = $(`#day${day + 1}Div`).empty();
             container.append(`<p class='daysdate'>${date}</p>`);
             container.append(`<img src='${icon}'>`);
             container.append(`<p>Temperature: ${temp} °F</p>`);
+            container.append(`<p>Feels like: ${temp} °F</p>`);
             container.append(`<p>Humidity: ${humidity}</p>`);
         });
     });

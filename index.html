@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/styles.css">
     <!-- FONT LINK: -->
     <link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <!-- BOOTSTRAP LINK: -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -25,6 +26,7 @@
 
     <div class="container-fluid">
         
+
         <div class="row headerRow">
             <div class="col-md-4 text-center">
                 <a href="https://jayptucker.com"><img class="logoImg" src="assets/images/favicon.png" alt="My Logo"></a>
@@ -38,6 +40,7 @@
             </div>
         </div>
 
+
         <div class="row currentWeatherRow">
             <div class="searchDiv col-md-4 justify-content-center">
                 <p class="search-txt">Search for a City</p>
@@ -49,20 +52,25 @@
             <div class="col-md-4 justify-content-center text-center weatherResultsCol" id="weatherDiv">
                     <!-- WEATHER INFO DIV -->
             </div> 
+
+            <div class="col-md-4">
+                
+            </div>
         </div>
+
 
         <div class="row FDFrow">
             <div class="col-md-12 text-center" id="5DFbtnDiv">
                 <!-- VIEW 5 DAY FORECAST BUTTON -->
             </div>
         </div>
+
         <div class="row d-flex justify-content-center text-center" id="5DFresults">
             <div class="col-md-2 5DFresults dayBoxes" id="day1Div"></div>
             <div class="col-md-2 5DFresults dayBoxes" id="day2Div"></div>
             <div class="col-md-2 5DFresults dayBoxes" id="day3Div"></div>
             <div class="col-md-2 5DFresults dayBoxes" id="day4Div"></div>
             <div class="col-md-2 5DFresults dayBoxes" id="day5Div"></div>
-            
         </div>
 
     </div>

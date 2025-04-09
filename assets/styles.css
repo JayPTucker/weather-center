@@ -168,9 +168,22 @@ ul {
     font-weight: bold;
 }
 
-img.weatherIcon {
-    width: 100px;
-    margin: -25px
+
+
+.location {
+    font-size: 2.3vmax;
+    margin: 0px;
+}
+.currentTemp {
+    font-size: 4vmax;
+}
+#currentCondition {
+    font-size: 2vmax;
+}
+#weatherIcon {
+    font-size: 48px;
+    color: #f4cb00;
+    margin-bottom: 10px;
 }
 
 /* ======================================= */
