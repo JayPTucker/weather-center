@@ -176,15 +176,17 @@ ul {
 }
 .currentTemp {
     font-size: 4vmax;
+    margin-bottom: 0px;
+}
+#weatherIcon {
+    font-size: 5.5vmax;
+    color: #f4cb00;
+    margin-bottom: 10px;
 }
 #currentCondition {
     font-size: 2vmax;
 }
-#weatherIcon {
-    font-size: 48px;
-    color: #f4cb00;
-    margin-bottom: 10px;
-}
+
 
 /* ======================================= */
 
