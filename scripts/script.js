@@ -1,5 +1,7 @@
 // Set current date
-$("#date").text("Date: " + moment().format("dddd, MMMM Do, YYYY"));
+$("#date").text(moment().format("dddd, MMMM Do, YYYY"));
+
+const recentCity = localStorage.key(0)
 
 // Load Search History
 function loadSearchHistory() {
@@ -14,7 +16,11 @@ function loadSearchHistory() {
     for (let i = 0; i < localStorage.length; i++) {
         const city = localStorage.key(i);
         historyContainer.append(`<li><button type="submit" class="historyBtn" id="${city}" value="${city}">${city}</button></li>`);
+        
     }
+
+    $("#currentCity").text(`Current City: ${recentCity}`)
+    fetchWeather(recentCity)
 }
 
 // Fetch Weather Data
@@ -103,15 +109,21 @@ function updateBackgroundVideo(videoPath) {
 
 
 function displayCurrentWeather(location, response) {
-    const { name, state, country } = location;
+    const { name } = location;
     const weatherDiv = $("#weatherDiv").empty();
 
     const weatherHTML = `
-        <p class="location">${name}${state ? `, ${state}` : ""} (${country})</p>
-        <p class="currentTemp">${((response.main.temp) * (9/5) - 459.67).toFixed(2)} °F</p>
-        <i class="wi wi-day-sunny" id="weatherIcon"></i>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="currentTemp">${((response.main.temp) * (9/5) - 459.67).toFixed(2)}°F</p>
+            </div>
+            <div styles="float: right;" class="col-md-4">
+                <i class="weather-icon wi wi-day-sunny" id="weatherIcon"></i>
+            </div>
+        </div>
+
         <p id="currentCondition"></p>
-        <p>Feels Like: ${((response.main.feels_like) * (9/5) - 459.67).toFixed(2)} °F</p>
+        <p>Feels Like: ${((response.main.feels_like) * (9/5) - 459.67).toFixed(2)}°F</p>
         <p>Humidity: ${response.main.humidity}</p>
         <p>Wind Speed: ${response.wind.speed} Mph</p>
     `;
@@ -120,6 +132,9 @@ function displayCurrentWeather(location, response) {
 
     // Inject the current condition
     $("#currentCondition").text(`Condition: ${response.weather[0].main}`);
+
+    $("#currentCity").text(`Current City: ${name}`)
+
 
     fetchUVIndex(response.coord.lat, response.coord.lon);
     setup5DayForecastButton(name);
@@ -158,7 +173,6 @@ function fetchUVIndex(lat, lon) {
 function setup5DayForecastButton(city) {
     const btnDiv = $("#5DFbtnDiv").empty();
     btnDiv.append(`<button class='FDFbtn' id='5DFbtn'>View 5 Day Forecast</button>`);
-    btnDiv.append(`<p class='currentcity'>Current City: ${city}</p>`);
 
     $("#5DFbtn").on("click", () => fetchFiveDayForecast(city));
 }

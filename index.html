@@ -16,48 +16,51 @@
     <title>JPT - Weather Center</title>
 </head>
 <body>
-    <video id="background-video-1" class="background-vid" autoplay muted loop playsinline>
-        <source src="./assets/videos/clear.mp4" type="video/mp4">
-      </video>
+    <div class="video-container">
+        <video id="background-video-1" class="background-vid" autoplay muted loop playsinline>
+          <source src="./assets/videos/clear.mp4" type="video/mp4">
+        </video>
       
-      <video id="background-video-2" class="background-vid" autoplay muted loop playsinline style="opacity: 0;">
-        <source src="./assets/videos/clear.mp4" type="video/mp4">
-      </video>
-
-    <div class="container-fluid">
-        
-
+        <video id="background-video-2" class="background-vid" autoplay muted loop playsinline style="opacity: 0;">
+          <source src="./assets/videos/clear.mp4" type="video/mp4">
+        </video>
+    </div>
+      
+    <div class="container">
         <div class="row headerRow">
-            <div class="col-md-4 text-center">
+            <div class="col-md-3 text-center">
                 <a href="https://jaypaultucker.org"><img class="logoImg" src="https://jaypaultucker.org/favicon.ico" alt="My Logo"></a>
             </div>
-            <div class="col-md-4 text-center">
-                <!-- <h4 class="title">The Weather Center</h4> -->
-                <img class="titleImg" src="assets/images/weatherCenterTitle.png">
+            <div class="col-md-6 text-center">
+                <h1 class="title">Weather Center</h1>
+                <p id="currentCity"></p>
             </div>
-            <div class="col-md-4 text-center justify-content-center datetext" id="date">
+            <div class="col-md-3 text-center justify-content-center datetext" id="date">
                 <!-- Date goes here -->
             </div>
         </div>
+    </div>
 
-
+    <div class="container main-container">
+        
         <div class="row currentWeatherRow">
-            <div class="searchDiv col-md-4 justify-content-center">
-                <p class="search-txt">Search for a City:</p>
-                <form><input id="city-search" type="text" placeholder="City Name Here"><button class="search-btn" id="search-btn">Search</button></form>
-                <p class="search-txt">Search History:</p>
-                <ul id="search-history"></ul>
-            </div>
-            
-            <div class="col-md-4 justify-content-center text-center weatherResultsCol" id="weatherDiv">
-                <h1 style="margin-top: 10vmax">Select or Type in a City to the left</h1>
+            <h5>Current Weather:</h5>
+
+            <div class="col-md-12 justify-content-center weatherResultsCol" id="weatherDiv">
+                <h1 style="margin-top: 10vmax">Please type in a city below</h1>
             </div> 
 
-            <div class="col-md-4">
-                
-            </div>
         </div>
 
+    </div>
+
+    <div class="search-container container">
+        <div class="searchDiv col-md-12 justify-content-center">
+            <p class="search-txt"><b>Search for a City</b></p>
+            <form><input id="city-search" type="text" placeholder="City Name Here"><button class="search-btn" id="search-btn">Search</button></form>
+            <p class="search-txt"><b>Recent Searches</b></p>
+            <ul id="search-history"></ul>
+        </div>
 
         <div class="row FDFrow">
             <div class="col-md-12 text-center" id="5DFbtnDiv">
@@ -72,8 +75,9 @@
             <div class="col-md-2 5DFresults dayBoxes" id="day4Div"></div>
             <div class="col-md-2 5DFresults dayBoxes" id="day5Div"></div>
         </div>
-
     </div>
+
+
     
 
 <!-- JQUERY LINK: -->
