@@ -64,6 +64,8 @@ ul {
     width: 70px;
     margin-top: 15px;
     transition: all .4s ease-in-out;
+    border-radius: 100%;
+    border: 1px solid white;
 }
 
 .logoImg:hover {
