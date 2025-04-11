@@ -141,8 +141,9 @@ p {
     font-weight: bold;
 }
 
-.historyBtn:focus {
-    color: red
+.historyBtn:active, .historyBtn:focus {
+    color: red;
+    border: none !important;
 }
 
 /* ======================================= */
