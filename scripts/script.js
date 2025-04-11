@@ -158,7 +158,7 @@ function displayCurrentWeather(location, response) {
 
 // Fetch UV Index
 function fetchUVIndex(lat, lon) {
-    const UVIqueryURL = `http://api.openweathermap.org/data/2.5/uvi?appid=e8bec4199b95f357f589f6ba4bdcd7c3&lat=${lat}&lon=${lon}`;
+    const UVIqueryURL = `https://api.openweathermap.org/data/2.5/uvi?appid=e8bec4199b95f357f589f6ba4bdcd7c3&lat=${lat}&lon=${lon}`;
 
     $.ajax({ url: UVIqueryURL, method: "GET" }).done(response => {
         const uvIndex = response.value;
