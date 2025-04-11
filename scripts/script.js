@@ -123,15 +123,15 @@ function displayCurrentWeather(location, response) {
         </div>
 
         <p id="currentCondition"></p>
-        <p>Feels Like: ${((response.main.feels_like) * (9/5) - 459.67).toFixed(2)}°F</p>
-        <p>Humidity: ${response.main.humidity}</p>
-        <p>Wind Speed: ${response.wind.speed} Mph</p>
+        <p class="metric-p">Feels Like: <span class="weather-metric">${((response.main.feels_like) * (9/5) - 459.67).toFixed(2)}°F</span></p>
+        <p class="metric-p">Humidity: <span class="weather-metric">${response.main.humidity}</span></p>
+        <p class="metric-p">Wind Speed: <span class="weather-metric">${response.wind.speed} Mph</span></p>
     `;
 
     weatherDiv.append(weatherHTML);
 
     // Inject the current condition
-    $("#currentCondition").text(`Condition: ${response.weather[0].main}`);
+    $("#currentCondition").text(`${response.weather[0].main}`);
 
     $("#currentCity").text(`Current City: ${name}`)
 
@@ -164,7 +164,7 @@ function fetchUVIndex(lat, lon) {
         const uvIndex = response.value;
         const uvColor = uvIndex <= 2 ? "green" : uvIndex <= 5 ? "yellow" : "red";
 
-        const uvElement = $(`<p id='uvIndex'>UV Index: ${uvIndex}</p>`).css("color", uvColor);
+        const uvElement = $(`<p class="metric-p" id='uvIndex'>UV Index: <span class="weather-metric">${uvIndex}</span></p>`).css("color", uvColor);
         $("#weatherDiv").append(uvElement);
     });
 }
